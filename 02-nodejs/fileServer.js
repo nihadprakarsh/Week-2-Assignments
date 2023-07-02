@@ -23,3 +23,33 @@ const app = express();
 
 
 module.exports = app;
+
+app.get('/files',(req,res)=>{
+  fs.readdir(path.join(__dirname + '/files'),(err,data)=>{
+    if (err) {
+      return res.status(500).json({ error: 'Failed to retrieve files' });
+    }
+    res.json(data)
+  })
+})
+
+
+
+app.get("/files/:filename",(req,res)=>{
+    let pathfile = fs.readdir(path.join(__dirname + '/files',req.params.filepath));
+    fs.readFile(pathfile,"utf8",(err,data)=>{
+      if(err)
+      res.status(500).json({error:"file not found"});
+      else
+      res.json(data);
+    })
+});cle
+
+module.exports = app;
+
+app.all('*', (req, res) => {
+  res.status(404).send('Route not found');
+});
+
+
+app.listen(3000);
