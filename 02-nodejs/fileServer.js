@@ -43,7 +43,7 @@ app.get("/files/:filename",(req,res)=>{
       else
       res.json(data);
     })
-});cle
+});
 
 module.exports = app;
 
