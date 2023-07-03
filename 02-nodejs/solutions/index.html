@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <h2>Todo List</h2>
+</head>
+
+
+<script>
+    function ClickHere(){
+        fetch("http://localhost:3000/todos",{
+        method : "GET",
+    }).then((resp)=>{
+        resp.json().then((data)=>{
+            console.log(data);
+        });
+    });
+    }
+</script>
+<body>
+    <form>
+        <label for="name1">Name:</label>
+       <input type="text" placeholder="Enter your name" id="name1"> 
+       <label for="Todo">Todo:</label>
+       <input type="text" placeholder="Enter your Task" id="Todo"> 
+       <button onclick="ClickHere">Submit</button>
+       <br>
+       <br>
+    </form>
+</body>
+</html>
